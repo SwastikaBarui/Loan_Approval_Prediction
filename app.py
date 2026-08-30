@@ -12,11 +12,9 @@ def load_models():
     model = joblib.load("Final_Model.pkl")
     encoder = joblib.load("Lable_Encoder.pkl")
     return transformer, model, encoder
-
-try:
-    transformer, model, encoder = load_models()
-except Exception as e:
-    st.error("Error loading model files. Please check if your .pkl files are uploaded correctly.")
+    
+# Load them directly so they are always available globally
+transformer, model, encoder = load_models()
 
 # 3. Core Prediction Function
 def predict_loan(dependents, education, employment, income_amount, loan_amount, loan_term, cibil_score, residential_asset, commercial_asset, luxury_assets, bank_assets):
